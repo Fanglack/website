@@ -1,622 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Bean & Bloom Café</title>
+    <title>Apple - 3D Website</title>
 
     <style>
-
-        /* ---------- General ---------- */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: Georgia, 'Times New Roman', serif;
-            background: #f5ead8;
-            color: #3e3025;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000;
+            color: white;
+            overflow-x: hidden;
         }
 
-        /* ---------- Navigation ---------- */
-
+        /* Navigation */
         nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-
+            height: 60px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-
-            padding: 20px 8%;
-
-            background: rgba(245, 234, 216, 0.92);
-            backdrop-filter: blur(12px);
-
-            border-bottom: 1px solid #dfcdb4;
+            gap: 40px;
+            background: rgba(20, 20, 20, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(15px);
         }
 
-        .logo {
-            font-size: 26px;
+        nav .logo {
+            font-size: 28px;
             font-weight: bold;
-            color: #5a3e2b;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: #a87850;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 35px;
-            list-style: none;
         }
 
         nav a {
+            color: #ddd;
             text-decoration: none;
-            color: #5a4635;
-            font-size: 15px;
+            font-size: 14px;
             transition: 0.3s;
         }
 
         nav a:hover {
-            color: #a06a43;
+            color: white;
         }
 
-        /* ---------- Hero ---------- */
-
+        /* Hero */
         .hero {
             min-height: 100vh;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 120px 8% 70px;
-
+            padding-top: 120px;
+            text-align: center;
             background:
-                radial-gradient(
-                    circle at 80% 45%,
-                    #ddc1a2 0%,
-                    transparent 32%
-                ),
-                #f5ead8;
-        }
-
-        .hero-text {
-            max-width: 580px;
-        }
-
-        .small-title {
-            color: #a06a43;
-            font-size: 16px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 18px;
+                radial-gradient(circle at center, #243b55 0%, #080808 45%, #000 75%);
+            perspective: 1200px;
         }
 
         .hero h1 {
-            font-size: clamp(50px, 7vw, 90px);
-            line-height: 0.95;
-            color: #4b3425;
-            margin-bottom: 25px;
+            font-size: 70px;
+            font-weight: 700;
+            letter-spacing: -3px;
         }
 
-        .hero h1 span {
-            color: #a87850;
-            font-style: italic;
+        .hero h2 {
+            font-size: 32px;
+            margin-top: 10px;
+            color: #aaa;
         }
 
         .hero p {
-            max-width: 500px;
+            color: #999;
+            margin-top: 15px;
             font-size: 18px;
-            line-height: 1.8;
-            color: #6b5747;
-            margin-bottom: 30px;
         }
 
-        .button {
-            display: inline-block;
-            padding: 15px 28px;
-
-            background: #6b4932;
-            color: white;
-
-            border-radius: 30px;
-
-            text-decoration: none;
-            font-size: 15px;
-
-            transition: 0.3s;
-            box-shadow: 0 10px 25px rgba(86, 55, 35, 0.2);
+        /* 3D Phone */
+        .phone-container {
+            width: 300px;
+            height: 500px;
+            margin: 70px auto 40px;
+            perspective: 1000px;
         }
 
-        .button:hover {
-            transform: translateY(-4px);
-            background: #4f3423;
-        }
-
-        .button-light {
-            margin-left: 10px;
-            background: transparent;
-            color: #6b4932;
-            border: 1px solid #9a7455;
-            box-shadow: none;
-        }
-
-        .button-light:hover {
-            background: #e6d2b9;
-        }
-
-        /* ---------- Coffee Illustration ---------- */
-
-        .coffee-area {
-            width: 420px;
-            height: 420px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
+        .phone {
+            width: 260px;
+            height: 500px;
+            margin: auto;
+            border-radius: 45px;
+            background: linear-gradient(
+                145deg,
+                #444,
+                #111,
+                #555,
+                #111
+            );
+            border: 5px solid #777;
+            box-shadow:
+                20px 20px 40px rgba(0,0,0,0.8),
+                -10px -10px 30px rgba(255,255,255,0.08),
+                inset 5px 5px 15px #777,
+                inset -5px -5px 15px #000;
+            transform: rotateY(-18deg) rotateX(8deg);
+            transition: 0.8s;
             position: relative;
         }
 
-        .coffee-circle {
-            width: 350px;
-            height: 350px;
-
-            background: #ead7bd;
-
-            border-radius: 50%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            box-shadow:
-                20px 25px 50px rgba(91, 60, 38, 0.15),
-                inset -10px -10px 30px rgba(133, 94, 61, 0.1);
+        .phone:hover {
+            transform: rotateY(18deg) rotateX(-5deg) translateY(-20px);
         }
 
-        .cup {
-            width: 210px;
-            height: 150px;
-
-            background: #fffaf2;
-
-            border-radius: 0 0 80px 80px;
-
-            position: relative;
-
-            box-shadow:
-                0 25px 25px rgba(75, 48, 30, 0.2);
-        }
-
-        .coffee {
-            width: 190px;
-            height: 45px;
-
+        /* Phone screen */
+        .screen {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 234px;
+            height: 474px;
+            border-radius: 37px;
+            overflow: hidden;
             background:
-                radial-gradient(
-                    circle,
-                    #b17a4e,
-                    #5b3924
-                );
+                radial-gradient(circle at 30% 20%, #ff5f6d, transparent 30%),
+                radial-gradient(circle at 70% 70%, #2193b0, transparent 35%),
+                linear-gradient(140deg, #090979, #020024);
+        }
 
-            border-radius: 50%;
-
+        /* Dynamic island */
+        .island {
             position: absolute;
-
-            top: -18px;
-            left: 10px;
-
-            box-shadow:
-                inset 0 5px 8px rgba(255,255,255,0.2);
+            top: 15px;
+            left: 72px;
+            width: 90px;
+            height: 25px;
+            border-radius: 20px;
+            background: #000;
+            z-index: 5;
         }
 
-        .handle {
-            width: 60px;
-            height: 65px;
-
-            border: 15px solid #fffaf2;
-
-            border-left: none;
-
-            border-radius: 0 50% 50% 0;
-
+        .screen-text {
             position: absolute;
-
-            right: -55px;
-            top: 25px;
-        }
-
-        .steam {
-            position: absolute;
-            width: 4px;
-            height: 70px;
-
-            background: #c5a98d;
-
-            border-radius: 50%;
-
-            opacity: 0.5;
-        }
-
-        .steam.one {
-            transform: rotate(8deg);
-            top: -90px;
-            left: 65px;
-        }
-
-        .steam.two {
-            transform: rotate(-8deg);
-            top: -105px;
-            left: 105px;
-        }
-
-        .steam.three {
-            transform: rotate(7deg);
-            top: -85px;
-            left: 145px;
-        }
-
-        /* ---------- About ---------- */
-
-        .about {
-            padding: 100px 8%;
-
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 70px;
-
-            background: #ead9c1;
-        }
-
-        .about-image {
-            min-height: 420px;
-
-            border-radius: 200px 200px 20px 20px;
-
-            background:
-                linear-gradient(
-                    rgba(78, 50, 32, 0.2),
-                    rgba(78, 50, 32, 0.2)
-                ),
-                #b28a65;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            font-size: 100px;
-
-            box-shadow:
-                20px 20px 0 #d5b99a;
-        }
-
-        .about-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .section-label {
-            color: #a06a43;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .about h2 {
-            font-size: 48px;
-            color: #4b3425;
-            margin-bottom: 20px;
-        }
-
-        .about p {
-            color: #6b5747;
-            line-height: 1.9;
-            font-size: 17px;
-        }
-
-        /* ---------- Menu ---------- */
-
-        .menu {
-            padding: 100px 8%;
+            bottom: 60px;
+            width: 100%;
             text-align: center;
         }
 
-        .menu h2 {
-            font-size: 50px;
-            color: #4b3425;
+        .screen-text h3 {
+            font-size: 25px;
+        }
+
+        .screen-text p {
+            font-size: 12px;
+            color: #ddd;
+        }
+
+        /* Camera */
+        .camera-area {
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 25px;
+            background: #151515;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        .camera {
+            width: 25px;
+            height: 25px;
+            background: #050505;
+            border: 3px solid #555;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .camera:nth-child(1) {
+            top: 10px;
+            left: 10px;
+        }
+
+        .camera:nth-child(2) {
+            top: 10px;
+            right: 10px;
+        }
+
+        .camera:nth-child(3) {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 8px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #0071e3;
+            color: white;
+        }
+
+        .secondary {
+            color: #2997ff;
+            border: 1px solid #2997ff;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
+        }
+
+        /* Products */
+        .products {
+            padding: 100px 8%;
+            background: #111;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 45px;
             margin-bottom: 50px;
         }
 
-        .menu-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 25px;
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
-        .menu-card {
-            background: #fff9ef;
-
-            padding: 35px 25px;
-
-            border-radius: 20px;
-
-            border: 1px solid #e2ccb0;
-
-            transition: 0.35s;
-
-            text-align: left;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-10px);
-
+        .card {
+            width: 280px;
+            min-height: 350px;
+            padding: 35px 20px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #222, #080808);
             box-shadow:
-                0 20px 40px
-                rgba(94, 61, 38, 0.12);
+                15px 15px 30px #050505,
+                -5px -5px 20px #292929;
+            transition: 0.5s;
+            transform-style: preserve-3d;
         }
 
-        .food-icon {
-            width: 70px;
-            height: 70px;
+        .card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
+        }
 
-            border-radius: 50%;
-
-            background: #ead4b8;
-
+        .product-icon {
+            width: 150px;
+            height: 190px;
+            margin: 0 auto 25px;
+            border-radius: 30px;
+            background: linear-gradient(145deg, #333, #050505);
+            box-shadow:
+                10px 10px 25px #000,
+                inset 3px 3px 10px #555;
             display: flex;
             align-items: center;
             justify-content: center;
-
-            font-size: 35px;
-
-            margin-bottom: 20px;
+            font-size: 60px;
         }
 
-        .menu-card h3 {
-            font-size: 23px;
+        .card h3 {
+            font-size: 25px;
             margin-bottom: 10px;
-            color: #543a28;
         }
 
-        .menu-card p {
-            color: #806b59;
+        .card p {
+            color: #aaa;
             line-height: 1.6;
-            margin-bottom: 20px;
         }
 
-        .price {
-            color: #a06a43;
-            font-size: 19px;
-            font-weight: bold;
-        }
-
-        /* ---------- Special ---------- */
-
-        .special {
-            padding: 90px 8%;
-
-            background: #5a3e2b;
-            color: white;
-
+        /* About */
+        .about {
+            padding: 100px 15%;
             text-align: center;
+            background: #000;
         }
 
-        .special h2 {
+        .about h2 {
             font-size: 45px;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
         }
 
-        .special p {
-            color: #dfcdb8;
-            max-width: 600px;
-            margin: auto;
+        .about p {
+            color: #aaa;
+            font-size: 18px;
             line-height: 1.8;
         }
 
-        .special .button {
-            margin-top: 25px;
-            background: #ead4b8;
-            color: #543a28;
-        }
-
-        /* ---------- Contact ---------- */
-
-        .contact {
-            padding: 100px 8%;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 48px;
-            color: #4b3425;
-            margin-bottom: 20px;
-        }
-
-        .contact p {
-            color: #806b59;
-            line-height: 1.8;
-            margin-bottom: 10px;
-        }
-
-        /* ---------- Footer ---------- */
-
+        /* Footer */
         footer {
-            padding: 30px 8%;
-
-            background: #3d2a1e;
-
-            color: #d9c4ab;
-
+            padding: 30px;
             text-align: center;
-
-            font-size: 14px;
+            background: #111;
+            color: #777;
         }
 
-        /* ---------- Responsive ---------- */
+        /* Mobile */
+        @media (max-width: 700px) {
 
-        @media (max-width: 900px) {
-
-            nav ul {
+            nav {
                 gap: 15px;
             }
 
-            .hero {
-                flex-direction: column;
-                text-align: center;
+            nav a {
+                font-size: 11px;
             }
 
-            .hero-text {
-                margin-bottom: 60px;
+            .hero h1 {
+                font-size: 48px;
             }
 
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
+            .hero h2 {
+                font-size: 24px;
             }
 
-            .coffee-area {
-                transform: scale(0.85);
+            .phone {
+                transform: rotateY(-10deg) rotateX(5deg);
             }
 
-            .about {
-                grid-template-columns: 1fr;
-            }
-
-            .menu-grid {
-                grid-template-columns: 1fr 1fr;
+            .products h2,
+            .about h2 {
+                font-size: 35px;
             }
         }
-
-        @media (max-width: 600px) {
-
-            nav {
-                padding: 15px 5%;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            .hero {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .coffee-area {
-                transform: scale(0.7);
-                margin-top: -40px;
-            }
-
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about h2,
-            .menu h2,
-            .contact h2 {
-                font-size: 38px;
-            }
-
-            .button-light {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-        }
-
     </style>
-
 </head>
-
 
 <body>
 
     <!-- Navigation -->
-
     <nav>
+        <div class="logo"></div>
 
-        <div class="logo">
-            Bean <span>&</span> Bloom
-        </div>
-
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Our Story</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
     </nav>
 
 
-    <!-- Hero -->
-
+    <!-- Hero Section -->
     <section class="hero" id="home">
 
-        <div class="hero-text">
+        <h1>iPhone</h1>
 
-            <div class="small-title">
-                Welcome to our café
+        <h2>Designed for the future.</h2>
+
+        <p>
+            A beautiful 3D-inspired Apple product experience.
+        </p>
+
+        <!-- 3D Phone -->
+        <div class="phone-container">
+
+            <div class="phone">
+
+                <div class="camera-area">
+                    <div class="camera"></div>
+                    <div class="camera"></div>
+                    <div class="camera"></div>
+                </div>
+
+                <div class="screen">
+
+                    <div class="island"></div>
+
+                    <div class="screen-text">
+                        <h3>Hello.</h3>
+                        <p>Innovation in your hands.</p>
+                    </div>
+
+                </div>
+
             </div>
-
-            <h1>
-                Slow mornings.<br>
-                <span>Good coffee.</span>
-            </h1>
-
-            <p>
-                A cozy little corner where freshly brewed coffee,
-                homemade treats and beautiful moments come together.
-            </p>
-
-            <a href="#menu" class="button">
-                Explore Our Menu
-            </a>
-
-            <a href="#about" class="button button-light">
-                Our Story
-            </a>
 
         </div>
 
+        <div class="buttons">
+            <a href="#products" class="btn primary">
+                Explore
+            </a>
 
-        <!-- Coffee Illustration -->
+            <a href="#about" class="btn secondary">
+                Learn More
+            </a>
+        </div>
 
-        <div class="coffee-area">
+    </section>
 
-            <div class="coffee-circle">
 
-                <div class="cup">
+    <!-- Products -->
+    <section class="products" id="products">
 
-                    <div class="steam one"></div>
-                    <div class="steam two"></div>
-                    <div class="steam three"></div>
+        <h2>Explore Products</h2>
 
-                    <div class="coffee"></div>
+        <div class="product-grid">
 
-                    <div class="handle"></div>
+            <div class="card">
 
+                <div class="product-icon">
+                    📱
                 </div>
+
+                <h3>iPhone</h3>
+
+                <p>
+                    Powerful technology with a beautiful design
+                    and an immersive experience.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="product-icon">
+                    💻
+                </div>
+
+                <h3>MacBook</h3>
+
+                <p>
+                    Incredible performance packed into a
+                    beautifully designed laptop.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="product-icon">
+                    ⌚
+                </div>
+
+                <h3>Apple Watch</h3>
+
+                <p>
+                    Your health, fitness and notifications
+                    right on your wrist.
+                </p>
 
             </div>
 
@@ -626,261 +464,28 @@
 
 
     <!-- About -->
-
     <section class="about" id="about">
 
-        <div class="about-image">
-            ☕
-        </div>
-
-        <div class="about-text">
-
-            <div class="section-label">
-                Our Story
-            </div>
-
-            <h2>
-                Made with warmth.
-            </h2>
-
-            <p>
-                Bean & Bloom was created with one simple idea:
-                coffee should feel like home.
-            </p>
-
-            <br>
-
-            <p>
-                From carefully selected coffee beans to our
-                freshly baked pastries, everything is prepared
-                with love and attention to detail.
-            </p>
-
-            <br>
-
-            <p>
-                Come in, take a seat, slow down and enjoy
-                something delicious.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- Menu -->
-
-    <section class="menu" id="menu">
-
-        <div class="section-label">
-            Our Favorites
-        </div>
-
-        <h2>
-            The Café Menu
-        </h2>
-
-
-        <div class="menu-grid">
-
-
-            <div class="menu-card">
-
-                <div class="food-icon">
-                    ☕
-                </div>
-
-                <h3>
-                    Classic Cappuccino
-                </h3>
-
-                <p>
-                    Rich espresso topped with silky
-                    steamed milk and creamy foam.
-                </p>
-
-                <div class="price">
-                    ₹180
-                </div>
-
-            </div>
-
-
-            <div class="menu-card">
-
-                <div class="food-icon">
-                    🥐
-                </div>
-
-                <h3>
-                    Butter Croissant
-                </h3>
-
-                <p>
-                    Golden, flaky and freshly baked
-                    every morning.
-                </p>
-
-                <div class="price">
-                    ₹150
-                </div>
-
-            </div>
-
-
-            <div class="menu-card">
-
-                <div class="food-icon">
-                    🍰
-                </div>
-
-                <h3>
-                    Chocolate Cake
-                </h3>
-
-                <p>
-                    Rich chocolate cake with a
-                    smooth creamy finish.
-                </p>
-
-                <div class="price">
-                    ₹220
-                </div>
-
-            </div>
-
-
-            <div class="menu-card">
-
-                <div class="food-icon">
-                    🥪
-                </div>
-
-                <h3>
-                    Café Sandwich
-                </h3>
-
-                <p>
-                    Fresh vegetables, cheese and
-                    our special house dressing.
-                </p>
-
-                <div class="price">
-                    ₹200
-                </div>
-
-            </div>
-
-
-            <div class="menu-card">
-
-                <div class="food-icon">
-                    🍵
-                </div>
-
-                <h3>
-                    Masala Chai
-                </h3>
-
-                <p>
-                    Fragrant Indian tea blended with
-                    aromatic spices.
-                </p>
-
-                <div class="price">
-                    ₹120
-                </div>
-
-            </div>
-
-
-            <div class="menu-card">
-
-                <div class="food-icon">
-                    🍪
-                </div>
-
-                <h3>
-                    Café Cookies
-                </h3>
-
-                <p>
-                    Warm, buttery cookies with
-                    delicious chocolate chips.
-                </p>
-
-                <div class="price">
-                    ₹100
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Special Offer -->
-
-    <section class="special">
-
-        <h2>
-            Your cozy corner awaits.
-        </h2>
+        <h2>Technology meets design.</h2>
 
         <p>
-            Fresh coffee, warm pastries and good conversations.
-            Visit Bean & Bloom and make your day a little sweeter.
-        </p>
-
-        <a href="#contact" class="button">
-            Visit Us
-        </a>
-
-    </section>
-
-
-    <!-- Contact -->
-
-    <section class="contact" id="contact">
-
-        <div class="section-label">
-            Come Say Hello
-        </div>
-
-        <h2>
-            Find Us
-        </h2>
-
-        <p>
-            📍 24 Garden Street, Bengaluru
-        </p>
-
-        <p>
-            ☎ +91 98765 43210
-        </p>
-
-        <p>
-            ✉ hello@beanandbloom.com
-        </p>
-
-        <p>
-            🕐 Monday – Sunday · 8:00 AM – 10:00 PM
+            This sample website demonstrates how HTML and internal
+            CSS can be used to create a modern Apple-inspired
+            interface with 3D transformations, gradients,
+            shadows, animations and responsive design.
         </p>
 
     </section>
 
 
     <!-- Footer -->
-
-    <footer>
+    <footer id="contact">
 
         <p>
-            © 2026 Bean & Bloom Café · Made with ☕ and love
+            © 2026 Apple Inspired Website | Student Project
         </p>
 
     </footer>
 
 </body>
-
 </html>
