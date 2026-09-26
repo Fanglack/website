@@ -3,131 +3,489 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My College Profile</title>
+    <title>Apple - 3D Website</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f2f6ff;
-            color: #333;
-        }
-
-        header {
-            background-color: #1e3a8a;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #000;
             color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            background: rgba(20, 20, 20, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(15px);
+        }
+
+        nav .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            padding-top: 120px;
             text-align: center;
-            padding: 30px;
+            background:
+                radial-gradient(circle at center, #243b55 0%, #080808 45%, #000 75%);
+            perspective: 1200px;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 35px;
+        .hero h1 {
+            font-size: 70px;
+            font-weight: 700;
+            letter-spacing: -3px;
         }
 
-        header p {
+        .hero h2 {
+            font-size: 32px;
+            margin-top: 10px;
+            color: #aaa;
+        }
+
+        .hero p {
+            color: #999;
+            margin-top: 15px;
             font-size: 18px;
         }
 
-        .container {
-            width: 80%;
-            max-width: 800px;
-            margin: 30px auto;
+        /* 3D Phone */
+        .phone-container {
+            width: 300px;
+            height: 500px;
+            margin: 70px auto 40px;
+            perspective: 1000px;
+        }
+
+        .phone {
+            width: 260px;
+            height: 500px;
+            margin: auto;
+            border-radius: 45px;
+            background: linear-gradient(
+                145deg,
+                #444,
+                #111,
+                #555,
+                #111
+            );
+            border: 5px solid #777;
+            box-shadow:
+                20px 20px 40px rgba(0,0,0,0.8),
+                -10px -10px 30px rgba(255,255,255,0.08),
+                inset 5px 5px 15px #777,
+                inset -5px -5px 15px #000;
+            transform: rotateY(-18deg) rotateX(8deg);
+            transition: 0.8s;
+            position: relative;
+        }
+
+        .phone:hover {
+            transform: rotateY(18deg) rotateX(-5deg) translateY(-20px);
+        }
+
+        /* Phone screen */
+        .screen {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 234px;
+            height: 474px;
+            border-radius: 37px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 30% 20%, #ff5f6d, transparent 30%),
+                radial-gradient(circle at 70% 70%, #2193b0, transparent 35%),
+                linear-gradient(140deg, #090979, #020024);
+        }
+
+        /* Dynamic island */
+        .island {
+            position: absolute;
+            top: 15px;
+            left: 72px;
+            width: 90px;
+            height: 25px;
+            border-radius: 20px;
+            background: #000;
+            z-index: 5;
+        }
+
+        .screen-text {
+            position: absolute;
+            bottom: 60px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .screen-text h3 {
+            font-size: 25px;
+        }
+
+        .screen-text p {
+            font-size: 12px;
+            color: #ddd;
+        }
+
+        /* Camera */
+        .camera-area {
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 25px;
+            background: #151515;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        .camera {
+            width: 25px;
+            height: 25px;
+            background: #050505;
+            border: 3px solid #555;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .camera:nth-child(1) {
+            top: 10px;
+            left: 10px;
+        }
+
+        .camera:nth-child(2) {
+            top: 10px;
+            right: 10px;
+        }
+
+        .camera:nth-child(3) {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 8px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #0071e3;
+            color: white;
+        }
+
+        .secondary {
+            color: #2997ff;
+            border: 1px solid #2997ff;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
+        }
+
+        /* Products */
+        .products {
+            padding: 100px 8%;
+            background: #111;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 45px;
+            margin-bottom: 50px;
+        }
+
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
         .card {
-            background-color: white;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            min-height: 350px;
+            padding: 35px 20px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #222, #080808);
+            box-shadow:
+                15px 15px 30px #050505,
+                -5px -5px 20px #292929;
+            transition: 0.5s;
+            transform-style: preserve-3d;
         }
 
-        .card h2 {
-            color: #1e3a8a;
-            border-bottom: 2px solid #1e3a8a;
-            padding-bottom: 8px;
+        .card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
         }
 
-        .info {
-            line-height: 1.8;
-            font-size: 17px;
+        .product-icon {
+            width: 150px;
+            height: 190px;
+            margin: 0 auto 25px;
+            border-radius: 30px;
+            background: linear-gradient(145deg, #333, #050505);
+            box-shadow:
+                10px 10px 25px #000,
+                inset 3px 3px 10px #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
         }
 
-        footer {
-            background-color: #1e3a8a;
-            color: white;
+        .card h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* About */
+        .about {
+            padding: 100px 15%;
             text-align: center;
-            padding: 15px;
-            margin-top: 30px;
+            background: #000;
+        }
+
+        .about h2 {
+            font-size: 45px;
+            margin-bottom: 25px;
+        }
+
+        .about p {
+            color: #aaa;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px;
+            text-align: center;
+            background: #111;
+            color: #777;
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+
+            nav {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 11px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero h2 {
+                font-size: 24px;
+            }
+
+            .phone {
+                transform: rotateY(-10deg) rotateX(5deg);
+            }
+
+            .products h2,
+            .about h2 {
+                font-size: 35px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>My College Profile</h1>
-        <p>Welcome to my personal webpage</p>
-    </header>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"></div>
 
-    <div class="container">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-        <div class="card">
-            <h2>Student Information</h2>
 
-            <div class="info">
-                <p><strong>Name:</strong>M.H ASHMAR</p>
-                <p><strong>USN / Roll No:</strong> 00057</p>
-                <p><strong>Course:</strong> Bachelor of Computer Science engineering</p>
-                <p><strong>Year:</strong> 2st Year</p>
-                <p><strong>Section:</strong> A</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <h1>iPhone</h1>
+
+        <h2>Designed for the future.</h2>
+
+        <p>
+            A beautiful 3D-inspired Apple product experience.
+        </p>
+
+        <!-- 3D Phone -->
+        <div class="phone-container">
+
+            <div class="phone">
+
+                <div class="camera-area">
+                    <div class="camera"></div>
+                    <div class="camera"></div>
+                    <div class="camera"></div>
+                </div>
+
+                <div class="screen">
+
+                    <div class="island"></div>
+
+                    <div class="screen-text">
+                        <h3>Hello.</h3>
+                        <p>Innovation in your hands.</p>
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
 
-        <div class="card">
-            <h2>College Information</h2>
+        <div class="buttons">
+            <a href="#products" class="btn primary">
+                Explore
+            </a>
 
-            <div class="info">
-                <p><strong>College Name:</strong> AJ institute of engineering Technology</p>
-                <p><strong>Department:</strong> Computer Science</p>
-                <p><strong>Location:</strong> mangaluru, Karnataka</p>
-                <p><strong>Academic Year:</strong> 2026 - 2027</p>
+            <a href="#about" class="btn secondary">
+                Learn More
+            </a>
+        </div>
+
+    </section>
+
+
+    <!-- Products -->
+    <section class="products" id="products">
+
+        <h2>Explore Products</h2>
+
+        <div class="product-grid">
+
+            <div class="card">
+
+                <div class="product-icon">
+                    📱
+                </div>
+
+                <h3>iPhone</h3>
+
+                <p>
+                    Powerful technology with a beautiful design
+                    and an immersive experience.
+                </p>
+
             </div>
-        </div>
 
-        <div class="card">
-            <h2>About Me</h2>
 
-            <p class="info">
-                Hello! My name is <strong>ASHMAR</strong>.
-                I am a college student interested in programming,
-                web development, and learning new technologies.
-                I enjoy working on projects and improving my technical skills.
-            </p>
-        </div>
+            <div class="card">
 
-        <div class="card">
-            <h2>My Skills</h2>
+                <div class="product-icon">
+                    💻
+                </div>
 
-            <div class="info">
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Python</li>
-                    <li>Communication Skills</li>
-                </ul>
+                <h3>MacBook</h3>
+
+                <p>
+                    Incredible performance packed into a
+                    beautifully designed laptop.
+                </p>
+
             </div>
+
+
+            <div class="card">
+
+                <div class="product-icon">
+                    ⌚
+                </div>
+
+                <h3>Apple Watch</h3>
+
+                <p>
+                    Your health, fitness and notifications
+                    right on your wrist.
+                </p>
+
+            </div>
+
         </div>
 
-    </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 Your ASHMAR | My College Website</p>
+
+    <!-- About -->
+    <section class="about" id="about">
+
+        <h2>Technology meets design.</h2>
+
+        <p>
+            This sample website demonstrates how HTML and internal
+            CSS can be used to create a modern Apple-inspired
+            interface with 3D transformations, gradients,
+            shadows, animations and responsive design.
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="contact">
+
+        <p>
+            © 2026 Apple Inspired Website | Student Project
+        </p>
+
     </footer>
 
 </body>
 </html>
-
